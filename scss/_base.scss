@@ -1,0 +1,108 @@
+$color-naranja-principal: #e0861f;
+$color-scrollbar: #b17b3d;
+$font-family: "Open Sans", sans-serif;
+$color-blanco: #fff;
+
+/* Medias queries */
+@mixin todoslosdispositivos {
+  @media (min-width: 320px) {
+  @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 992px) and (max-width: 1200px) {
+  @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 768px) and (max-width: 992px) {
+  @content;
+  }
+}
+
+@mixin tabletminis {
+  @media (min-width: 480px) and (max-width: 767px) {
+  @content;
+  }
+}
+
+@mixin mobile {
+  @media (min-width: 320px) and (max-width: 479px) {
+  @content;
+  }
+}
+
+/* Flex */
+@mixin flex-column-y-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url(../fonts/OpenSans-Light.ttf);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: $font-family;
+    font-weight: bolder;
+    background-color: #1d2026;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 8px;
+    color: $color-scrollbar;
+    transition: all 0.4s ease;
+
+    &-thumb {
+      background: $color-scrollbar;
+      border-radius: 8px;
+      width: 8px;
+      transition: all 0.4s ease;
+    }
+
+    &-track{
+      background: #fff;
+      border-radius: 8px;
+      width: 8px;
+    }
+  }
+  
+  li,
+  ol {
+    list-style: none;
+  }
+
+.animacion-titulos {
+    animation: animacion 1s infinite ease-in-out alternate;
+    -webkit-animation: animacion 1s infinite ease-in-out alternate;
+  }
+  
+  @keyframes animacion {
+    100% {
+      transform: translateY(5px);
+      -webkit-transform: translateY(5px);
+      -ms-transform: translateY(5px);
+      -o-trasnform: translateY(5px);
+    }
+  }
+
+.accordion-button {
+  color: $color-naranja-principal!important;
+}

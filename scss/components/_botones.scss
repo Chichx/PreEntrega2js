@@ -1,0 +1,43 @@
+.contenedor-productos__boton--productos {
+    text-decoration: none;
+    text-align: center;
+    background-color: $color-naranja-principal;
+    color: $color-blanco;
+    border: 1px solid $color-naranja-principal;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 2rem;
+    padding: 8px 16px;
+    position: relative;
+    bottom: 10px;
+    box-shadow: 0 4px 15px 0 rgba(252, 104, 110, 0.75);
+  }
+
+  .contenedor__botones--boton1 {
+    margin-left: 5px;
+    text-decoration: none;
+    background-color: $color-naranja-principal;
+    color: $color-blanco;
+    border: 1px solid $color-naranja-principal;
+    border-radius: 5px;
+    padding: 8px 16px;
+
+    &:hover{
+      background-color: transparent;
+    }
+  }
+  
+  .contenedor__botones--boton2 {
+    margin-left: 5px;
+    text-decoration: none;
+    background-color: transparent;
+    color: $color-blanco;
+    border: 1px solid $color-naranja-principal;
+    border-radius: 5px;
+    padding: 8px 16px;
+
+    &:hover {
+      background-color: $color-naranja-principal;
+    }
+  }

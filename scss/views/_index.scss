@@ -1,0 +1,26 @@
+.contenedor {
+    @include flex-column-y-center;
+    background-image: url(../images/backgroud.jpg);
+    background-attachment: fixed;
+    height: 75vh;
+    overflow-clip-margin: content-box;
+    object-fit: contain;
+
+    &__titulo {
+      text-align: center;
+      color: $color-naranja-principal;
+      text-shadow: 0 0px 10px $color-naranja-principal;
+    }
+
+    &__descripcion {
+      display: grid;
+      grid-template-columns: 1fr;
+      width: 320px;
+      text-align: center;
+      color: $color-blanco;
+    }
+
+    &__botones {
+      @include flex-center;
+    }
+  }

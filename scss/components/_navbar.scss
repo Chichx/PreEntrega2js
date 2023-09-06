@@ -1,0 +1,19 @@
+.navbar {
+    font-family: $font-family;
+    font-weight: bolder;
+
+    &.color-n {
+      background-color: $color-naranja-principal !important;
+      position: sticky;
+      top: 0px;
+      z-index: 1;
+    }
+  }
+  
+  .navbar-nav .nav-item .nav-link.active {
+    color: $color-blanco;
+  }
+  
+  .container .navbar-brand {
+    color: $color-blanco;
+  }

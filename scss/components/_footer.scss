@@ -1,0 +1,116 @@
+.contenedor__footer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    background-color: $color-naranja-principal;
+    margin: 0 auto;
+    padding: 1rem;
+    list-style: none;
+
+  @include tablet {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "titulo titulo titulo" "acercade productos contacto";
+  }
+
+  @include tabletminis {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "titulo acercade" "productos contacto";
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    grid-template-areas: "titulo "acercade" "productos" contacto";
+  }
+
+    &--titulo {
+      @include flex-column-y-center;
+      font-family: $font-family;
+      font-size: 25px;
+      font-weight: bold;
+
+      a {
+        text-decoration: none;
+        color: $color-blanco;
+      }
+
+      @include tablet {
+        grid-area: titulo;
+      }
+    }
+
+    &--acercade {
+      @include flex-column-y-center;
+      padding: 1rem;
+
+      @include tablet {
+        grid-area: acercade;
+        @include flex-column-y-center;
+      }
+    }
+
+    &--listas {
+      @include flex-column-y-center;
+      padding: 0.5rem;
+
+      li a {
+        text-decoration: none;
+        color: $color-blanco;
+        font-family: $font-family;
+
+        &:hover {
+          text-decoration: none;
+          color: #1d2026;
+        }
+      }
+    }
+
+    &--productos {
+      @include flex-column-y-center;
+
+      @include tablet {
+        grid-area: productos;
+        @include flex-column-y-center;
+      }
+    }
+
+    &--contacto {
+      @include flex-column-y-center;
+
+      @include tablet {
+        grid-area: contacto;
+        @include flex-column-y-center;
+      }
+    }
+
+    h5 {
+      color: $color-blanco;
+      font-family: $font-family;
+      font-weight: bold;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 992px) {
+    .contenedor__footer {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-areas: "titulo titulo titulo" "acercade productos contacto";
+    }
+  
+    .contenedor__footer--titulo {
+      grid-area: titulo;
+    }
+  
+    .contenedor__footer--acercade {
+      grid-area: acercade;
+      @include flex-column-y-center;
+    }
+  
+    .contenedor__footer--productos {
+      grid-area: productos;
+      @include flex-column-y-center;
+    }
+  
+    .contenedor__footer--contacto {
+      grid-area: contacto;
+      @include flex-column-y-center;
+    }
+  }
