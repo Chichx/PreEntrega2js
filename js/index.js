@@ -53,7 +53,7 @@ function buscarCamiseta() {
       const camisetas = document.querySelectorAll('.contenedor-productos__border--productos');
   
       camisetas.forEach((camiseta) => {
-        const nombreCamiseta = camiseta.querySelector('h2').textContent.toLowerCase();
+        const nombreCamiseta = camiseta.querySelector('h2').innerText.toLowerCase();
         
         if (nombreCamiseta.includes(textoBusqueda)) {
           camiseta.style.display = 'block'; 
@@ -84,7 +84,7 @@ function filtrarCamisetasPorPrecio() {
     const camisetas = document.querySelectorAll('.contenedor-productos__border--productos');
 
     camisetas.forEach((camiseta) => {
-      const precioCamiseta = parseInt(camiseta.querySelector('span').textContent);
+      const precioCamiseta = parseInt(camiseta.querySelector('span').innerText);
       
       if (precioCamiseta >= minimoParaGastar && precioCamiseta <= maximoParaGastar) {
         camiseta.style.display = 'block'; 
@@ -205,7 +205,7 @@ function cargarCarritoDelLocal() {
 function actualizarPrecioTotal() {
   const precioTotal = document.getElementById("precioTotal")
   const precioTotalDeProductos = carritoDelUsuario.reduce((acumulador, camiseta) => acumulador + camiseta.precio * camiseta.cantidad, 0)
-  precioTotal.textContent = `Precio Total: $${precioTotalDeProductos}`
+  precioTotal.innerText = `Precio Total: $${precioTotalDeProductos}`
 }
 
 
