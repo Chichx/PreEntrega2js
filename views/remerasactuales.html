@@ -80,7 +80,7 @@
       </div>
     </header>
 
-    <main>
+    <main id="modoDeLuz" class="light">
       <a class="contenedor-productos__volver-al-inicio" href="../index.html"
         ><i
           class="fa-solid fa-arrow-left contenedor-productos__volver-al-inicio"
@@ -90,10 +90,68 @@
       <h1 class="contenedor-productos__titulo--productos animacion-titulos">
         Camisetas Actuales
       </h1>
+      <div class="botonDeLuz" id="modoDeLuzBoton">
+        <div id="iconoContenedor">
+          <i id="modoIcono" class="fas fa-sun"></i>
+        </div>
+      </div>
+
+        <div id="abrirCarrito">
+          <i class="fas fa-shopping-cart">Ver carrito</i>
+        </div>
+      <div id="carritoContenedor" style="display: none;">
+        <table id="carritoTable" class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Accion</th>
+            </tr>
+          </thead>
+          <tbody id="carritoBody">
+            
+          </tbody>
+          
+        </table>
+        <div>
+          <p style="color: black;" id="precioTotal"></p>
+        </div>
+      </div>
+      
       <hr />
+
+      <div class="container">
+        <div class="row height d-flex justify-content-center align-items-center">
+          <div class="col-md-6">
+            <div class="form">
+              <i class="fa fa-search"></i>
+              <input type="text" id="inputBusqueda" class="form-control form-input" placeholder="Busca una remera...">
+            </div>
+          </div>
+      
+          <div class="col-md-3">
+            <div class="form">
+              <input type="number" id="inputMinimo" class="form-control form-input" placeholder="Mínimo para gastar">
+            </div>
+          </div>
+      
+          <div class="col-md-3">
+            <div class="form">
+              <input type="number" id="inputMaximo" class="form-control form-input" placeholder="Máximo para gastar">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+
       <section class="contenedor-productos" id="camisetas">
         <!-- Todos los productos van aca -->
+        
       </section>
+
     </main>
 
     <footer>
@@ -144,6 +202,8 @@
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/camisetas.js"></script>
     <script src="../js/index.js"></script>
   </body>
 </html>

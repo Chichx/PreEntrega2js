@@ -93,6 +93,100 @@ $color-blanco: #fff;
     animation: animacion 1s infinite ease-in-out alternate;
     -webkit-animation: animacion 1s infinite ease-in-out alternate;
   }
+
+#modoDeLuzBoton {
+    cursor: pointer;
+  }
+
+.botonDeLuz {
+  @include flex-center;
+  }
+
+.dark {
+    background-color: #1d2026;
+    color: #fff;
+    
+    p {
+      color: #fff;
+    }
+
+    .toast-body {
+      color: #1d2026;
+    }
+
+    .contenedor-productos__border--productos {
+      border-color: #1d2026;
+    }
+  }
+
+  .light {
+    background-color: #fff;
+
+    p {
+      color: #1d2026;
+    }
+
+    .contenedor-productos__border--productos {
+      border-color: #fff;
+    }
+  }
+
+  #abrirCarrito {
+    @include flex-center();
+    padding-top: 10px;
+    margin-bottom: 20px; 
+    cursor: pointer;
+  }
+  
+  #carritoContenedor {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 1000;
+    width: 400px; 
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .form {
+    position: relative;
+  }
+  
+  .form .fa-search {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #9ca3af;
+  }
+  
+  .form span {
+    position: absolute;
+    right: 17px;
+    top: 13px;
+    padding: 2px;
+    border-left: 1px solid #d1d5db;
+  }
+  
+  .left-pan {
+    padding-left: 7px;
+  }
+  
+  .left-pan i {
+    padding-left: 10px;
+  }
+  
+  .form-input {
+    height: 55px;
+    text-indent: 33px;
+    border-radius: 10px;
+  }
+  
+  .form-input:focus {
+    box-shadow: none;
+    border: none;
+  }
   
   @keyframes animacion {
     100% {
