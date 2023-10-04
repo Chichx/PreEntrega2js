@@ -131,6 +131,10 @@ $color-blanco: #fff;
     }
   }
 
+  .contenedor__completar {
+    @include flex-center()
+  }
+
   #abrirCarrito {
     @include flex-center();
     padding-top: 10px;

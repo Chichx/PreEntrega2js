@@ -77,6 +77,12 @@ ol {
   border-color: #fff;
 }
 
+.contenedor__completar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #abrirCarrito {
   display: flex;
   justify-content: center;

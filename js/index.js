@@ -1,5 +1,18 @@
-console.log(camisetas)
 let carritoDelUsuario = []
+let camisetas;
+
+async function cargarCamisetas() {
+  try {
+    const response = await fetch('../json/camisetas.json');
+    const data = await response.json();
+    camisetas = data;
+    seccionDeCamisetas(camisetas);
+    console.log(camisetas);
+  } catch (error) {
+    console.error('Error al cargar el archivo JSON:', error);
+  }
+}
+cargarCamisetas();
 
 cargarCarritoDelLocal()
 
@@ -43,7 +56,6 @@ function seccionDeCamisetas(listaDeCamisetas) {
     });
   }
 }
-seccionDeCamisetas(camisetas);
 
 function buscarCamiseta() {
   const inputBusqueda = document.getElementById('inputBusqueda');
@@ -121,6 +133,7 @@ function anadirAlCarrito(idDeLaCamiseta) {
 
       guardarCarritoEnElLocal();
       actualizarPrecioTotal();
+      actualizarTextoCarrito();
     } else {
       const carrito = {
         id: encontrarCamiseta.id,
@@ -145,6 +158,7 @@ function anadirAlCarrito(idDeLaCamiseta) {
 
       guardarCarritoEnElLocal();
       actualizarPrecioTotal();
+      actualizarTextoCarrito();
     }
 
     } else {
@@ -156,6 +170,7 @@ function borrarDeCarrito(id) {
   const numeroDeIndex = carritoDelUsuario.findIndex((camiseta) => camiseta.id == id);
 
   if (numeroDeIndex !== -1) {
+    (localStorage.getItem('productosComprados') != null) ? localStorage.setItem('productosComprados', parseInt(localStorage.getItem('productosComprados')) - 1) : localStorage.setItem('productosComprados', 1);
     carritoDelUsuario.splice(numeroDeIndex, 1);
 
     const carritoBody = document.getElementById('carritoBody');
@@ -172,9 +187,34 @@ function borrarDeCarrito(id) {
     console.log(carritoDelUsuario);
     guardarCarritoEnElLocal();
     actualizarPrecioTotal();
+    actualizarTextoCarrito();
   }
 }
 
+function completarCompra() {
+  const precioTotalDeProductos = carritoDelUsuario.reduce((acumulador, camiseta) => acumulador + camiseta.precio * camiseta.cantidad, 0);
+  const listaDeCamisetas = carritoDelUsuario.map((camiseta) => `${camiseta.camisetanombre} (x${camiseta.cantidad})`).join(", ");
+
+  Swal.fire({
+    icon: 'success',
+    title: 'Compra completada',
+    html: `Productos comprados: ${listaDeCamisetas}<br><br>
+           Precio total: $${precioTotalDeProductos}`,
+  });
+
+  const carritoBody = document.getElementById('carritoBody');
+  const filas = carritoBody.getElementsByTagName('tr');
+
+  while (filas.length > 0) {
+    carritoBody.removeChild(filas[0]);
+  }
+
+  carritoDelUsuario = [];
+  guardarCarritoEnElLocal();
+  actualizarTextoCarrito();
+  actualizarPrecioTotal();
+  localStorage.setItem('productosComprados', 0);
+}
 
 function guardarCarritoEnElLocal() {
   localStorage.setItem("carritoDelUsuario", JSON.stringify(carritoDelUsuario))
@@ -208,7 +248,6 @@ function actualizarPrecioTotal() {
   precioTotal.innerText = `Precio Total: $${precioTotalDeProductos}`
 }
 
-
 const contenedor = document.getElementById('modoDeLuz');
 const iconContainer = document.getElementById('iconoContenedor');
 const modoIcono = document.getElementById('modoIcono');
@@ -239,17 +278,36 @@ function LightMode() {
   localStorage.setItem('mode', 'light');
 }
 
+const completarCompraBtn = document.getElementById('completarCompraBtn');
+
+function actualizarVisibilidadBoton() {
+  if (carritoDelUsuario.length > 0) {
+    completarCompraBtn.style.display = 'block'; 
+  } else {
+    completarCompraBtn.style.display = 'none';
+  }
+}
+
 const abrirCarrito = document.getElementById('abrirCarrito');
 const carritoContenedor = document.getElementById('carritoContenedor');
+
+let cantidadItems = 0;
+
+function actualizarTextoCarrito() {
+  cantidadItems = carritoDelUsuario ? carritoDelUsuario.length : 0;
+  abrirCarrito.innerHTML = `<i class="fas fa-shopping-cart"> Ver carrito (${cantidadItems})</i>`;
+  actualizarVisibilidadBoton();
+}
+actualizarTextoCarrito();
 
 abrirCarrito.addEventListener('click', () => {
   const carritoVisible = carritoContenedor.style.display !== 'none';
 
   if (carritoVisible) {
     carritoContenedor.style.display = 'none';
-    abrirCarrito.innerHTML = '<i class="fas fa-shopping-cart"> Ver carrito</i>';
+    abrirCarrito.innerHTML = `<i class="fas fa-shopping-cart"> Ver carrito (${cantidadItems})</i>`;
   } else {
     carritoContenedor.style.display = 'block';
-    abrirCarrito.innerHTML = '<i class="fas fa-x"></i>';
+    abrirCarrito.innerHTML = '<i class="fas fa-times"></i>';
   }
 });
